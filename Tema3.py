@@ -21,13 +21,7 @@ print(f"A mai ramas ceafa: {'ceafa' in meniu} ")
 print(f"Au mai ramas papanasi: {'papanasi' in meniu} ")
 print(f"A mai ramas guias: {'guias' in meniu} ")
 print("FINANTE:")
-incasari = 0
-incasari += preturi[0][1] * numar_papanasi
-incasari += preturi[1][1] * numar_ceafa
-incasari += preturi[2][1] * numar_guias
+incasari = sum([pret for comanda in istoric_comenzi for produs, pret in preturi if comanda == produs])
 print(f"Cantina a încasat: {incasari} lei.")
-produse_ieftine = []
-for produs in preturi:
-    if produs[1] <= 7:
-produse_ieftine.append(produs)
-print(f"Produse mai ieftine de 7 lei: {produse_ieftine}")
+produse_ieftine = [produs for produs in preturi if produs[1] <= 7]
+print(f"Produse care costă cel mult 7 lei: {produse_ieftine}")
